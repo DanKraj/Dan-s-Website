@@ -22,7 +22,9 @@ export class VibeChecker extends Component {
         return (
             <div>
                 <row>
-                    <img height="250" width="250" src={HappyFace}  alt="HappyVibes" />
+                    <a href='https://google.com'>
+                        <img height="250" width="250" src={HappyFace} alt="HappyVibes" />
+                    </a>
                     <img height="250" width="250" src={NeutralFace}  alt="NeutralVibes" />
                     <img height="250" width="250" src={SadFace}  alt="SadVibes" />
                     <img height="250" width="250" src={AngryFace}  alt="BadVibes" />
