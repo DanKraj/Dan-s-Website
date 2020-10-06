@@ -2,7 +2,8 @@
 import SadFace  from  '../VibeChecker/sad.png'
 import HappyFace  from  '../VibeChecker/smile.jpg'
 import AngryFace  from  '../VibeChecker/angry.jpg'
-import NeutralFace  from  '../VibeChecker/neutral.jpg'
+import NeutralFace from '../VibeChecker/neutral.jpg'
+
 export class VibeChecker extends Component {
     static displayName = VibeChecker.name;
 
@@ -22,7 +23,7 @@ export class VibeChecker extends Component {
         return (
             <div>
                 <row>
-                    <a href='https://google.com'>
+                    <a href={ this.addVibe(1)}>
                         <img height="250" width="250" src={HappyFace} alt="HappyVibes" />
                     </a>
                     <img height="250" width="250" src={NeutralFace}  alt="NeutralVibes" />
@@ -33,5 +34,21 @@ export class VibeChecker extends Component {
                 <h1>Hello World!</h1>
             </div>
         );
+    }
+
+    async addVibe(vibeLevel) {
+        const newVibe;
+        newVibe.VibeLevel = vibeLevel;
+        newVibe.VibeComment = "";
+        fetch()
+
+        const response = await fetch("", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(newVibe)
+        });
+        
     }
 }
