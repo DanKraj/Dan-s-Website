@@ -41,7 +41,7 @@ namespace LearningReact.Controllers
         }
 
         [HttpPost]
-        public void AddVibeCheck(string vibe)
+        public void AddVibeCheck([FromBody]Vibes vibe)
         {
             Console.WriteLine("Vibe: " + vibe);
             //Vibes newVibe = vibe.ToObject<Vibes>();

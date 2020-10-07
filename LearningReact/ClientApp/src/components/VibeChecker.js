@@ -37,15 +37,19 @@ export class VibeChecker extends Component {
     }
 
     async addVibe(vibeLevel) {
+
         var newVibe = { VibeLevel: vibeLevel };
         newVibe.VibeLevel = vibeLevel;
-
+        alert(vibeLevel);
         const response = await fetch("vibes", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(newVibe)
+            body: JSON.stringify({
+                    "VibeLevel": "1",
+                    "VibeDetails": "good"
+            })
         });
         
     }
