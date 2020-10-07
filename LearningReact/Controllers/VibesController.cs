@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using LearningReact.Model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json.Linq;
 
 namespace LearningReact.Controllers
 {
@@ -24,11 +25,28 @@ namespace LearningReact.Controllers
             _logger = logger;
         }
 
-        [HttpPost]
-        public void AddVibeCheck(Vibes vibe)
+        [HttpGet]
+        public IEnumerable<Vibes> GetAllVibes()
         {
-            DansWebsiteContext context = new DansWebsiteContext();
-            context.AddVibeCheck(vibe);
+            return new List<Vibes>()
+            {
+                new Vibes()
+                {
+                    VibeDetails = "good",
+                    VibeLevel = "1",
+                    DateRecorded = DateTime.Now,
+                    Id  = 1
+                }
+            };
+        }
+
+        [HttpPost]
+        public void AddVibeCheck(string vibe)
+        {
+            Console.WriteLine("Vibe: " + vibe);
+            //Vibes newVibe = vibe.ToObject<Vibes>();
+            //DansWebsiteContext context = new DansWebsiteContext();
+            //context.AddVibeCheck(newVibe);
         }
     }
 }

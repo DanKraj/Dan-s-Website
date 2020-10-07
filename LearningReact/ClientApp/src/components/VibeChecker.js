@@ -23,7 +23,7 @@ export class VibeChecker extends Component {
         return (
             <div>
                 <row>
-                    <a href={ this.addVibe(1)}>
+                    <a href="#" onClick={ this.addVibe(1)}>
                         <img height="250" width="250" src={HappyFace} alt="HappyVibes" />
                     </a>
                     <img height="250" width="250" src={NeutralFace}  alt="NeutralVibes" />
@@ -37,12 +37,10 @@ export class VibeChecker extends Component {
     }
 
     async addVibe(vibeLevel) {
-        const newVibe;
+        var newVibe = { VibeLevel: vibeLevel };
         newVibe.VibeLevel = vibeLevel;
-        newVibe.VibeComment = "";
-        fetch()
 
-        const response = await fetch("", {
+        const response = await fetch("vibes", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
