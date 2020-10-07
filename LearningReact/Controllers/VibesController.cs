@@ -43,10 +43,8 @@ namespace LearningReact.Controllers
         [HttpPost]
         public void AddVibeCheck([FromBody]Vibes vibe)
         {
-            Console.WriteLine("Vibe: " + vibe);
-            //Vibes newVibe = vibe.ToObject<Vibes>();
-            //DansWebsiteContext context = new DansWebsiteContext();
-            //context.AddVibeCheck(newVibe);
+            DansWebsiteContext context = new DansWebsiteContext();
+            context.AddVibeCheck(vibe);
         }
     }
 }
