@@ -23,7 +23,7 @@ export class VibeChecker extends Component {
         return (
             <div>
                 <row>
-                    <a href="#" onClick={ this.addVibe(1)}>
+                    <a href="#" onClick={ this.addVibe("1")}>
                         <img height="250" width="250" src={HappyFace} alt="HappyVibes" />
                     </a>
                     <img height="250" width="250" src={NeutralFace}  alt="NeutralVibes" />
@@ -47,7 +47,7 @@ export class VibeChecker extends Component {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                    "VibeLevel": "1",
+                    "VibeLevel": vibeLevel,
                     "VibeDetails": "good"
             })
         });

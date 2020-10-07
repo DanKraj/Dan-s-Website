@@ -9,6 +9,10 @@ namespace LearningReact.Model
     {
         public void AddVibeCheck(Vibes vibe)
         {
+            if(vibe.DateRecorded is null)
+            {
+                vibe.DateRecorded = DateTime.Now;
+            }
             this.Vibes.Add(vibe);
             this.SaveChanges();
         }
