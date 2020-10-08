@@ -47,10 +47,8 @@ export class VibeChecker extends Component {
 
     async addVibe(vibeLevel) {
 
-        var vibeDetails = document.getElementById("vibeDetails").nodeValue;
         var newVibe = { VibeLevel: vibeLevel };
         newVibe.VibeLevel = vibeLevel;
-        alert(this.state.value);
         const response = await fetch("vibes", {
             method: 'POST',
             headers: {
