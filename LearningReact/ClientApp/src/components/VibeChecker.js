@@ -3,7 +3,6 @@ import SadFace  from  '../VibeChecker/sad.png'
 import HappyFace  from  '../VibeChecker/smile.jpg'
 import AngryFace  from  '../VibeChecker/angry.jpg'
 import NeutralFace from '../VibeChecker/neutral.jpg'
-
 export class VibeChecker extends Component {
     static displayName = VibeChecker.name;
 
@@ -26,6 +25,10 @@ export class VibeChecker extends Component {
         });
     }
 
+    static renderOverviewOfVibes() {
+
+    }
+
     render() {
         return (
             <div>
@@ -35,12 +38,11 @@ export class VibeChecker extends Component {
                     <img height="250" width="250" src={SadFace} alt="SadVibes" onClick={() => this.addVibe("-1")}/>
                     <img height="250" width="250" src={AngryFace} alt="BadVibes" onClick={() => this.addVibe("-2")}/>
                 </row>
-                <row>
-                    <input type="text" id="vibeDetails" name="vibeDetails" value={this.state.value} onChange={this.handleChange} />
-                </row>
+                <div class="form-group">
+                    <label for="vibeDetails">So how was you're day?</label>
+                    <textarea class="form-control" id="vibeDetails" row="2" onChange={this.handleChange} ></textarea>
+                </div>
 
-
-                <h1>Hello World!</h1>
             </div>
         );
     }
