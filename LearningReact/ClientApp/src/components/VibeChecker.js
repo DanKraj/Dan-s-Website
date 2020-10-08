@@ -9,8 +9,15 @@ export class VibeChecker extends Component {
 
     constructor(props) {
         super(props);
-        this.state = { currentCount: 0 };
+        this.state = {
+            currentCount: 0,
+            value: ''};
         this.incrementCounter = this.incrementCounter.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+    }
+
+    handleChange(event) {
+        this.setState({value: event.target.value})
     }
 
     incrementCounter() {
@@ -29,7 +36,7 @@ export class VibeChecker extends Component {
                     <img height="250" width="250" src={AngryFace} alt="BadVibes" onClick={() => this.addVibe("-2")}/>
                 </row>
                 <row>
-                    <input type="text" id="vibeDetails" name="vibeDetails"/>
+                    <input type="text" id="vibeDetails" name="vibeDetails" value={this.state.value} onChange={this.handleChange} />
                 </row>
 
 
@@ -43,7 +50,7 @@ export class VibeChecker extends Component {
         var vibeDetails = document.getElementById("vibeDetails").nodeValue;
         var newVibe = { VibeLevel: vibeLevel };
         newVibe.VibeLevel = vibeLevel;
-        alert(vibeDetails);
+        alert(this.state.value);
         const response = await fetch("vibes", {
             method: 'POST',
             headers: {
@@ -51,7 +58,7 @@ export class VibeChecker extends Component {
             },
             body: JSON.stringify({
                     "VibeLevel": vibeLevel,
-                    "VibeDetails": vibeDetails
+                    "VibeDetails": this.state.value
             })
         });
         
