@@ -27,19 +27,6 @@ export class VibeChecker extends Component {
         });
     }
 
-    renderTableData() {
-
-        return this.state.allVibes.map(vibe => {
-            return (
-                <tr key={vibe.id}>
-                    <td>{vibe.vibeLevel}</td>
-                    <td>{vibe.vibeDetails}</td>
-                    <td>{vibe.dateRecorded}</td>
-                </tr>
-                )
-        })
-    }
-
     render() {
         if (!this.state.vibeSubmitted) {
             return (
@@ -80,6 +67,19 @@ export class VibeChecker extends Component {
             );
         }
         
+    }
+
+    renderTableData() {
+
+        return this.state.allVibes.map(vibe => {
+            return (
+                <tr key={vibe.id}>
+                    <td>{vibe.vibeLevel}</td>
+                    <td>{vibe.vibeDetails}</td>
+                    <td>{vibe.dateRecorded}</td>
+                </tr>
+            )
+        })
     }
 
     async pullVibeData() {
