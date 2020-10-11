@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
@@ -15,6 +17,11 @@ namespace LearningReact.Model
             }
             this.Vibes.Add(vibe);
             this.SaveChanges();
+        }
+
+        public IEnumerable<Vibes> GetVibes()
+        {
+            return this.Vibes.ToList<Vibes>();
         }
     }
 }

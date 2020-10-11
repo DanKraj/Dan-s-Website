@@ -28,16 +28,8 @@ namespace LearningReact.Controllers
         [HttpGet]
         public IEnumerable<Vibes> GetAllVibes()
         {
-            return new List<Vibes>()
-            {
-                new Vibes()
-                {
-                    VibeDetails = "good",
-                    VibeLevel = "1",
-                    DateRecorded = DateTime.Now,
-                    Id  = 1
-                }
-            };
+            DansWebsiteContext context = new DansWebsiteContext();
+            return context.GetVibes();
         }
 
         [HttpPost]
