@@ -32,7 +32,6 @@ export class VibeChecker extends Component {
         return this.state.allVibes.map(vibe => {
             return (
                 <tr key={vibe.id}>
-                    <td>{vibe.id}</td>
                     <td>{vibe.vibeLevel}</td>
                     <td>{vibe.vibeDetails}</td>
                     <td>{vibe.dateRecorded}</td>
@@ -62,7 +61,7 @@ export class VibeChecker extends Component {
         else {
             return (
                 <div>
-                    <table class="table">
+                    <table class="table table-striped table-bordered  table-hover">
                         <thead>
                             <tr>
                                 <th scope="col">Vibe Level</th>
@@ -91,8 +90,6 @@ export class VibeChecker extends Component {
             }
         });
         var DataTest = await response.json();
-
-        alert(JSON.stringify(DataTest));
 
         await this.setState({ allVibes: DataTest });
         this.setState({ vibeSubmitted: true });
