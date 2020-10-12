@@ -42,6 +42,9 @@ export class NavMenu extends Component {
                 <NavItem>
                   <NavLink tag={Link} className="text-dark" to="/vibe-tracker">Vibe Tracker</NavLink>
                 </NavItem>
+                <NavItem>
+                    <NavLink tag={Link} className="text-dark" to="/WeightTracking">Weight Tracker</NavLink>
+                </NavItem>
               </ul>
             </Collapse>
           </Container>
