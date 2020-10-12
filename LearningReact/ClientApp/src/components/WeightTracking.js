@@ -1,17 +1,16 @@
 ﻿import React, { Component } from 'react';
-import SadFace  from  '../VibeChecker/sad.png'
-import HappyFace  from  '../VibeChecker/smile.jpg'
-import AngryFace  from  '../VibeChecker/angry.jpg'
-import NeutralFace from '../VibeChecker/neutral.jpg'
-export class VibeChecker extends Component {
-    static displayName = VibeChecker.name;
+
+export class WeightTracker extends Component {
+    static displayName = WeightTracker.name;
 
     constructor(props) {
         super(props);
         this.state = {
+            currentCount: 0,
             value: '',
-            weightSubmitted: false,
-            allWeights: [{}]};
+            vibeSubmitted: false,
+            allVibes: [{}]};
+        this.incrementCounter = this.incrementCounter.bind(this);
         this.handleChange = this.handleChange.bind(this);
     }
 
@@ -19,27 +18,24 @@ export class VibeChecker extends Component {
         this.setState({value: event.target.value})
     }
 
+    incrementCounter() {
+        this.setState({
+            currentCount: this.state.currentCount + 1
+        });
+    }
+
     render() {
-        if (!this.state.weightSubmitted) {
+        if (!this.state.vibeSubmitted) {
             return (
                 <div>
-                    <row>
-                        <img height="250" width="250" src={HappyFace} alt="HappyVibes" onClick={() => this.addVibe("1")} />
-                        <img height="250" width="250" src={NeutralFace} alt="NeutralVibes" onClick={() => this.addVibe("0")} />
-                        <img height="250" width="250" src={SadFace} alt="SadVibes" onClick={() => this.addVibe("-1")} />
-                        <img height="250" width="250" src={AngryFace} alt="BadVibes" onClick={() => this.addVibe("-2")} />
-                    </row>
-                    <row>
                     <div class="form-group">
-                        <label for="vibeDetails">So how was you're day?</label>
+                        <label for="vibeDetails">What is today's weigh in?</label>
                         <textarea class="form-control" id="vibeDetails" row="2" onChange={this.handleChange} ></textarea>
-                        </div>
-                    </row>
-                    <row>
-                        <div class="button" onClick={() => this.addWeight()} />
-                    </row>
+                    </div>
+                    <div>
+                        <button onClick={() => this.addWeight() } />
+                    </div>
 
-                        
 
                 </div>
             );
@@ -101,7 +97,7 @@ export class VibeChecker extends Component {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                    "Pounds": this.state.value
+                "Pounds": this.state.value
             })
         });
     }
