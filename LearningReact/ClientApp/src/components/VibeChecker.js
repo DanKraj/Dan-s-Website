@@ -9,9 +9,11 @@ export class VibeChecker extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            currentCount: 0,
             value: '',
-            weightSubmitted: false,
-            allWeights: [{}]};
+            vibeSubmitted: false,
+            allVibes: [{}]};
+        this.incrementCounter = this.incrementCounter.bind(this);
         this.handleChange = this.handleChange.bind(this);
     }
 
@@ -19,8 +21,14 @@ export class VibeChecker extends Component {
         this.setState({value: event.target.value})
     }
 
+    incrementCounter() {
+        this.setState({
+            currentCount: this.state.currentCount + 1
+        });
+    }
+
     render() {
-        if (!this.state.weightSubmitted) {
+        if (!this.state.vibeSubmitted) {
             return (
                 <div>
                     <row>
@@ -29,17 +37,10 @@ export class VibeChecker extends Component {
                         <img height="250" width="250" src={SadFace} alt="SadVibes" onClick={() => this.addVibe("-1")} />
                         <img height="250" width="250" src={AngryFace} alt="BadVibes" onClick={() => this.addVibe("-2")} />
                     </row>
-                    <row>
                     <div class="form-group">
                         <label for="vibeDetails">So how was you're day?</label>
                         <textarea class="form-control" id="vibeDetails" row="2" onChange={this.handleChange} ></textarea>
-                        </div>
-                    </row>
-                    <row>
-                        <div class="button" onClick={() => this.addWeight()} />
-                    </row>
-
-                        
+                    </div>
 
                 </div>
             );
@@ -94,15 +95,21 @@ export class VibeChecker extends Component {
         this.setState({ vibeSubmitted: true });
     }
 
-    async addWeight() {
-        const response = await fetch("weight", {
+    async addVibe(vibeLevel) {
+
+        var newVibe = { VibeLevel: vibeLevel };
+        newVibe.VibeLevel = vibeLevel;
+        const response = await fetch("vibes", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                    "Pounds": this.state.value
+                    "VibeLevel": vibeLevel,
+                    "VibeDetails": this.state.value
             })
         });
+
+        this.pullVibeData();
     }
 }
