@@ -1,8 +1,4 @@
 ﻿import React, { Component } from 'react';
-import SadFace from '../VibeChecker/sad.png'
-import HappyFace from '../VibeChecker/smile.jpg'
-import AngryFace from '../VibeChecker/angry.jpg'
-import NeutralFace from '../VibeChecker/neutral.jpg'
 export class VibeChecker extends Component {
     static displayName = VibeChecker.name;
 
@@ -23,13 +19,16 @@ export class VibeChecker extends Component {
 
 
     render() {
-        
+        <div>
+            <input type='text' width='100'/>
+        </div>
+
 
     }
 
 
-    async pullVibeData() {
-        const response = await fetch("vibes", {
+    async pullWeightData() {
+        const response = await fetch("weight", {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -37,15 +36,14 @@ export class VibeChecker extends Component {
         });
         var DataTest = await response.json();
 
-        await this.setState({ allVibes: DataTest });
-        this.setState({ vibeSubmitted: true });
+        await this.setState({ allWeight: DataTest });
     }
 
-    async addVibe(vibeLevel) {
+    async addWeight() {
 
         var newVibe = { VibeLevel: vibeLevel };
         newVibe.VibeLevel = vibeLevel;
-        const response = await fetch("vibes", {
+        const response = await fetch("weight", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
