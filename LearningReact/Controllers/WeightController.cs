@@ -11,28 +11,27 @@ namespace LearningReact.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class VibesController : ControllerBase
+    public class WeightController : ControllerBase
     {
+        private readonly ILogger<WeightController> _logger;
 
-        private readonly ILogger<VibesController> _logger;
-
-        public VibesController(ILogger<VibesController> logger)
+        public WeightController(ILogger<WeightController> logger)
         {
             _logger = logger;
         }
 
         [HttpGet]
-        public IEnumerable<Vibes> GetAllVibes()
+        public IEnumerable<Weight> GetAllWeights()
         {
             DansWebsiteContext context = new DansWebsiteContext();
-            return context.GetVibes();
+            return context.GetWeight();
         }
 
         [HttpPost]
-        public void AddVibeCheck([FromBody]Vibes vibe)
+        public void AddWeight([FromBody]Weight weight)
         {
             DansWebsiteContext context = new DansWebsiteContext();
-            context.AddVibeCheck(vibe);
+            context.AddWeight(weight);
         }
     }
 }

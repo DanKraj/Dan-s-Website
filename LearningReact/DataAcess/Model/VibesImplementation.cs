@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace LearningReact.Model
+namespace LearningReact.Models
 {
     public partial class DansWebsiteContext : DbContext
     {
