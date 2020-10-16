@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace LearningReact.Model
+namespace LearningReact.Models
 {
     public partial class DansWebsiteContext : DbContext
     {
@@ -16,11 +16,13 @@ namespace LearningReact.Model
         }
 
         public virtual DbSet<Vibes> Vibes { get; set; }
+        public virtual DbSet<Weight> Weight { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
                 optionsBuilder.UseSqlServer("Data Source=DESKTOP-DGEOM0P;Initial Catalog=DansWebsite;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
             }
         }
@@ -36,6 +38,13 @@ namespace LearningReact.Model
                 entity.Property(e => e.VibeDetails).IsUnicode(false);
 
                 entity.Property(e => e.VibeLevel).IsUnicode(false);
+            });
+
+            modelBuilder.Entity<Weight>(entity =>
+            {
+                entity.Property(e => e.Id).ValueGeneratedNever();
+
+                entity.Property(e => e.DateRecorded).HasColumnType("datetime");
             });
 
             OnModelCreatingPartial(modelBuilder);
